@@ -28,6 +28,7 @@ exclude:
   - gulpfile.js
   - LICENSE
   - node_modules
+  - README.md
   - src
   - package.json
   - vagrant

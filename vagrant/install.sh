@@ -75,3 +75,5 @@ npm install
 # npm install --save-dev gulp-babel babel-preset-es2015
 # npm install --save-dev gulp-concat
 # npm install --save-dev gulp-minify
+# npm install --save-dev gulp-header
+# npm install --save-dev gulp-file-include

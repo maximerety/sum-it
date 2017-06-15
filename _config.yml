@@ -22,9 +22,14 @@ theme: jekyll-theme-architect
 # gems:
 #   - jekyll-feed
 exclude:
+  - build
   - Gemfile
   - Gemfile.lock
+  - gulpfile.js
   - LICENSE
+  - node_modules
+  - src
+  - package.json
   - vagrant
   - Vagrantfile
 

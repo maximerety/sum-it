@@ -1,3 +1,5 @@
 .vagrant/
 _site/
 architect/
+build/
+node_modules/

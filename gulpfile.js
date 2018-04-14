@@ -9,7 +9,16 @@ const fileinclude = require('gulp-file-include');
 gulp.task('assemble', () => {
     return  gulp.src(['src/node.js', 'src/num.js', 'src/dataset.js', 'src/main.js'])
                 .pipe(concat('bookmarklet.js'))
-                .pipe(babel({ presets: ['es2015'], comments: false }))
+                .pipe(babel({
+                    presets: [[
+                        "env", {
+                            "targets": {
+                                "browsers": ["last 2 versions", "ie >= 11"]
+                            }
+                        }
+                    ]],
+                    comments: false
+                }))
                 .pipe(gulp.dest('build'));
 });
 
@@ -35,19 +44,19 @@ gulp.task('include_bookmarlet', [ 'compress' ], () => {
                 .pipe(fileinclude({
                     prefix: '@@',
                     basepath: '@file',
-                        filters: {
-                            escape: function (text) {
-                                var map = {
-                                    '&': '&amp;',
-                                    '<': '&lt;',
-                                    '>': '&gt;',
-                                    '"': '&quot;',
-                                    "'": '&#039;'
-                                };
+                    filters: {
+                        escape: function (text) {
+                            var map = {
+                                '&': '&amp;',
+                                '<': '&lt;',
+                                '>': '&gt;',
+                                '"': '&quot;',
+                                "'": '&#039;'
+                            };
 
-                                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-                            }
+                            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
                         }
+                    }
                 }))
                 .pipe(gulp.dest('.'));
 });

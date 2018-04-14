@@ -3,12 +3,12 @@
 HOST = "dev.sum-it.io"
 
 Vagrant.configure("2") do |config|
-  # Find boxes at https://atlas.hashicorp.com/search.
+  # Find boxes at https://app.vagrantup.com/boxes/search.
   config.vm.box = "debian/jessie64"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.1.84" # random local IP, let's hope it's free!
+  config.vm.network "private_network", ip: "192.168.2.10" # random local IP, let's hope it's free!
   config.vm.hostname = HOST
 
   # Share an additional folder to the guest VM. The first argument is
@@ -22,16 +22,19 @@ Vagrant.configure("2") do |config|
     vb.memory = "512"
   end
 
-  # Provisioning
-  config.vm.provision "install", type: "shell", path: "vagrant/install.sh"
+  # Provisioning (run once)
+  config.vm.provision "install", type: "shell", privileged: false, path: "vagrant/install.sh"
 
-  # Launch Jekyll server at startup
-  config.vm.provision "up", type: "shell", run: "always", inline: <<-SHELL
+  # Startup script (run every time the vm is launched)
+  config.vm.provision "up", type: "shell", privileged: false, run: "always", inline: <<-SHELL
     cd /vagrant
+    # Build bookmarklet
+    gulp
+    # Launch server
     # --host 0.0.0.0: listen on all interfaces (not only loopback) so it's accessible outside the VM
     #                 (https://zarino.co.uk/post/jekyll-local-network/ / https://stackoverflow.com/a/16608698)
     # --watch: check for updates in main folder (/vagrant)
     # --force-polling: avoid outdated files due to synced_folder latency
-    bundle exec jekyll serve --port 80 --host 0.0.0.0 --watch --force-polling
+    sudo bundle exec jekyll serve --port 80 --host 0.0.0.0 --watch --force-polling
   SHELL
 end

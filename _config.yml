@@ -19,7 +19,7 @@ description: A bookmarklet to quickly sum data
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-architect
-gems:
+plugins:
   - jekyll-sitemap
 exclude:
   - build

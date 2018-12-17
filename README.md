@@ -16,8 +16,6 @@ You can run the Sum it! website locally following these steps:
 1. Install [VirtualBox](https://www.virtualbox.org/)
 1. Clone the project
 1. Run the VM: `vagrant up` (will be slow only the first time)
-1. Connect to the VM: `vagrant ssh`
-1. Build with Gulp and launch the Jekyll web server: `cd /vagrant && gulp && sudo bundle exec jekyll serve`
 1. Go to [dev.sum-it.io](http://dev.sum-it.io) in your browser
 1. Stop the VM: `vagrant halt`
 

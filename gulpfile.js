@@ -5,13 +5,12 @@ const concat = require('gulp-concat');
 const minify = require('gulp-minify');
 const fileinclude = require('gulp-file-include');
 
-
 gulp.task('assemble', () => {
     return  gulp.src(['src/node.js', 'src/num.js', 'src/dataset.js', 'src/main.js'])
                 .pipe(concat('bookmarklet.js'))
                 .pipe(babel({
                     presets: [[
-                        "env", {
+                        "@babel/env", {
                             "targets": {
                                 "browsers": ["last 2 versions", "ie >= 11"]
                             }
@@ -22,7 +21,7 @@ gulp.task('assemble', () => {
                 .pipe(gulp.dest('build'));
 });
 
-gulp.task('compress', [ 'assemble' ], () => {
+gulp.task('compress', () => {
     return  gulp.src(['build/*.js', '!build/*.min.js'])
                 .pipe(minify({
                     ext: {
@@ -33,7 +32,7 @@ gulp.task('compress', [ 'assemble' ], () => {
                 .pipe(gulp.dest('build'))
 });
 
-gulp.task('include_bookmarlet', [ 'compress' ], () => {
+gulp.task('include_bookmarlet', () => {
     var warning_message =  "<!--\n\n" +
                            "    /!\\ WARNING : THIS FILE HAS BEEN GENERATED /!\\\n\n" +
                            "    Edit src/index.md, then rebuild with gulp.\n\n" +
@@ -61,8 +60,4 @@ gulp.task('include_bookmarlet', [ 'compress' ], () => {
                 .pipe(gulp.dest('.'));
 });
 
-gulp.task('default', [ 'include_bookmarlet' ]);
-
-// Note: when switching to Gulp 4, remove task dependencies and execute in series.
-//
-// gulp.task('default', gulp.series('assemble', 'compress', 'include_bookmarlet'));
+gulp.task('default', gulp.series('assemble', 'compress', 'include_bookmarlet'));

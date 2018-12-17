@@ -2,15 +2,18 @@
 set -x
 
 # software versioning
-NODEJS_VERSION=8.11.1
-RUBY_VERSION=2.5.1
+NODEJS_VERSION=10.14.2
+RUBY_VERSION=2.5.3
 RUBY_VERSION_SHORT=2.5
+
+# common apt-get option
+force_yes="--allow-downgrades --allow-remove-essential --allow-change-held-packages"
 
 # distrib repo update
 sudo apt-get update
 
 # install git
-sudo apt-get --yes --force-yes install git
+sudo apt-get --yes $force_yes install git
 
 # install nodejs
 wget -q https://nodejs.org/dist/v$NODEJS_VERSION/node-v$NODEJS_VERSION-linux-x64.tar.xz
@@ -22,14 +25,14 @@ rm -rf node-v$NODEJS_VERSION-linux-x64*
 
 # install ruby dependencies on debian
 # (stolen from RVM source: https://github.com/rvm/rvm/blob/5441a9939c72a53643899c6528ddd9a7385fa2d6/scripts/functions/requirements/debian#L113)
-sudo apt-get --yes --force-yes install make
-sudo apt-get --yes --force-yes install g++ gcc
+sudo apt-get --yes $force_yes install make
+sudo apt-get --yes $force_yes install g++ gcc
 
-sudo apt-get --yes --force-yes install libc6-dev patch openssl ca-certificates \
-                                       curl zlib1g zlib1g-dev libyaml-dev \
-                                       libsqlite3-dev sqlite3 autoconf libgmp-dev \
-                                       libgdbm-dev libncurses5-dev automake libtool \
-                                       bison pkg-config libffi-dev libssl-dev
+sudo apt-get --yes $force_yes install libc6-dev patch openssl ca-certificates \
+                                      curl zlib1g zlib1g-dev libyaml-dev \
+                                      libsqlite3-dev sqlite3 autoconf libgmp-dev \
+                                      libgdbm-dev libncurses5-dev automake libtool \
+                                      bison pkg-config libffi-dev libssl-dev
 
 # install ruby from sources (needs a wget version compatible with TLSv1.2+)
 wget -q https://cache.ruby-lang.org/pub/ruby/$RUBY_VERSION_SHORT/ruby-$RUBY_VERSION.tar.gz
@@ -45,7 +48,6 @@ tar xzf ruby-$RUBY_VERSION.tar.gz
 rm -rf ruby-$RUBY_VERSION*
 
 sudo gem update --system --no-ri --no-rdoc
-sudo gem install bundler --no-ri --no-rdoc
 
 # go to project root directory (to find Gemfile and package.json)
 cd /vagrant
@@ -72,7 +74,7 @@ npm install
 # or (if no package.json yet):
 # npm init
 # npm install --save-dev gulp
-# npm install --save-dev gulp-babel babel-core babel-preset-env
+# npm install --save-dev gulp-babel @babel/core @babel/preset-env
 # npm install --save-dev gulp-concat
 # npm install --save-dev gulp-minify
 # npm install --save-dev gulp-header

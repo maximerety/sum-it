@@ -17,13 +17,13 @@
   },
   "homepage": "https://github.com/maximerety/sum-it#readme",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.0",
-    "gulp": "^4.0.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.0.1",
-    "gulp-header": "^2.0.7",
+    "gulp-header": "^2.0.9",
     "gulp-minify": "^3.1.0"
   }
 }

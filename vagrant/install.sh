@@ -2,18 +2,19 @@
 set -x
 
 # software versioning
-NODEJS_VERSION=10.14.2
-RUBY_VERSION=2.5.3
-RUBY_VERSION_SHORT=2.5
+NODEJS_VERSION=10.16.0
+RUBY_VERSION=2.6.3
+RUBY_VERSION_SHORT=2.6
 
-# common apt-get option
-force_yes="--allow-downgrades --allow-remove-essential --allow-change-held-packages"
+# repository index update
+sudo apt-get -y update --allow-releaseinfo-change
 
-# distrib repo update
-sudo apt-get update
+# upgrade packages
+# see: https://github.com/SteveWooding/OAuth2.0/commit/dcc8162c40d2092f36b5947e3d385fef4bd78805
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 
 # install git
-sudo apt-get --yes $force_yes install git
+sudo apt-get -y install git
 
 # install nodejs
 wget -q https://nodejs.org/dist/v$NODEJS_VERSION/node-v$NODEJS_VERSION-linux-x64.tar.xz
@@ -24,15 +25,14 @@ wget -q https://nodejs.org/dist/v$NODEJS_VERSION/node-v$NODEJS_VERSION-linux-x64
 rm -rf node-v$NODEJS_VERSION-linux-x64*
 
 # install ruby dependencies on debian
-# (stolen from RVM source: https://github.com/rvm/rvm/blob/5441a9939c72a53643899c6528ddd9a7385fa2d6/scripts/functions/requirements/debian#L113)
-sudo apt-get --yes $force_yes install make
-sudo apt-get --yes $force_yes install g++ gcc
-
-sudo apt-get --yes $force_yes install libc6-dev patch openssl ca-certificates \
-                                      curl zlib1g zlib1g-dev libyaml-dev \
-                                      libsqlite3-dev sqlite3 autoconf libgmp-dev \
-                                      libgdbm-dev libncurses5-dev automake libtool \
-                                      bison pkg-config libffi-dev libssl-dev
+# (stolen from RVM source: https://github.com/rvm/rvm/blob/0e3b23a/scripts/functions/requirements/debian)
+sudo apt-get -y install make
+sudo apt-get -y install g++ gcc
+sudo apt-get -y install autoconf automake bison ca-certificates curl libc6-dev libffi-dev libgdbm-dev libncurses5-dev \
+                        libsqlite3-dev libtool libyaml-dev openssl patch pkg-config sqlite3 zlib1g zlib1g-dev
+sudo apt-get -y install libgmp-dev
+sudo apt-get -y install libreadline-dev
+sudo apt-get -y install libssl-dev
 
 # install ruby from sources (needs a wget version compatible with TLSv1.2+)
 wget -q https://cache.ruby-lang.org/pub/ruby/$RUBY_VERSION_SHORT/ruby-$RUBY_VERSION.tar.gz
@@ -47,20 +47,20 @@ tar xzf ruby-$RUBY_VERSION.tar.gz
 )
 rm -rf ruby-$RUBY_VERSION*
 
-sudo gem update --system --no-ri --no-rdoc
+sudo gem update --system --no-document
 
 # go to project root directory (to find Gemfile and package.json)
 cd /vagrant
 
 # install gems from the Gemfile (gh-pages & jekyll)
-sudo bundle install
+bundle install
 
 # install jekyll theme locally
 if [ ! -d architect ]; then
   git clone https://github.com/pages-themes/architect
   (
     cd architect/
-    sudo ./script/bootstrap
+    bundle install
   )
 fi
 

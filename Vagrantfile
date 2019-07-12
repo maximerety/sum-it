@@ -4,7 +4,7 @@ HOST = "dev.sum-it.io"
 
 Vagrant.configure("2") do |config|
   # Find boxes at https://app.vagrantup.com/boxes/search.
-  config.vm.box = "debian/stretch64"
+  config.vm.box = "debian/buster64"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.

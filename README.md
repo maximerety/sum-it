@@ -21,4 +21,4 @@ You can run the Sum it! website locally following these steps:
 
 ## Credits
 
-The development process of Sum it! uses the following open source and/or free softwares: NodeJS, Npm, Babel, Gulp, Ruby, VirtualBox, Vagrant, Git, Jekyll, Github Pages, Linux Debian. Kudos to all their creators and maintainers!
+The development process of Sum it! uses the following open source and/or free softwares: Node.js, Npm, Babel, Gulp, Ruby, VirtualBox, Vagrant, Git, Jekyll, Github Pages, Linux Debian. Kudos to all their creators and maintainers!

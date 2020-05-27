@@ -2,9 +2,9 @@
 set -x
 
 # software versioning
-NODEJS_VERSION=12.16.1
-RUBY_VERSION=2.6.5
-RUBY_VERSION_SHORT=2.6
+NODEJS_VERSION=12.17.0
+RUBY_VERSION=2.7.1
+RUBY_VERSION_SHORT=2.7
 
 # repository index update
 sudo apt-get -y update --allow-releaseinfo-change

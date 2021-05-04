@@ -2,8 +2,8 @@
 set -x
 
 # software versioning
-NODEJS_VERSION=12.17.0
-RUBY_VERSION=2.7.1
+NODEJS_VERSION=12.22.1
+RUBY_VERSION=2.7.2
 RUBY_VERSION_SHORT=2.7
 
 # repository index update

@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
 
   # Provider-specific configuration
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "512"
+    vb.memory = "1024"
   end
 
   # Provisioning (run once)
@@ -27,6 +27,7 @@ Vagrant.configure("2") do |config|
 
   # Startup script (run every time the vm is launched)
   config.vm.provision "up", type: "shell", privileged: false, run: "always", inline: <<-SHELL
+    set -ex
     cd /vagrant
     # Build bookmarklet
     gulp

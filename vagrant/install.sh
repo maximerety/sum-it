@@ -55,15 +55,6 @@ cd /vagrant
 # install gems from the Gemfile (gh-pages & jekyll)
 bundle install
 
-# install jekyll theme locally
-if [ ! -d architect ]; then
-  git clone https://github.com/pages-themes/architect
-  (
-    cd architect/
-    bundle install
-  )
-fi
-
 # install the gulp client globally: this is NOT gulp, but rather a
 # wrapper to use the gulp version installed locally in the project,
 # see: https://stackoverflow.com/a/35573218.

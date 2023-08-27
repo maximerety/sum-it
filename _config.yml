@@ -18,8 +18,9 @@ description: A bookmarklet to quickly sum data
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-architect
+remote_theme: pages-themes/architect
 plugins:
+  - jekyll-remote-theme
   - jekyll-sitemap
 exclude:
   - build
@@ -30,6 +31,7 @@ exclude:
   - node_modules
   - README.md
   - src
+  - package-lock.json
   - package.json
   - vagrant
   - Vagrantfile

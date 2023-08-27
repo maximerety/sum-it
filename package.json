@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/maximerety/sum-it#readme",
   "devDependencies": {
-    "@babel/core": "7.14.0",
-    "@babel/preset-env": "7.14.1",
+    "@babel/core": "7.23.0",
+    "@babel/preset-env": "7.22.20",
     "gulp": "4.0.2",
     "gulp-babel": "8.0.0",
     "gulp-concat": "2.6.1",

@@ -23,6 +23,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-sitemap
 exclude:
+  - .devcontainer
   - build
   - Gemfile
   - Gemfile.lock
@@ -33,11 +34,6 @@ exclude:
   - src
   - package-lock.json
   - package.json
-  - vagrant
-  - Vagrantfile
 
 # Server settings
-port: 80
-host: 0.0.0.0 # listen on all interfaces (not only loopback) so it's accessible outside the VM
-              # see: https://zarino.co.uk/post/jekyll-local-network/
-              #      https://stackoverflow.com/a/16608698)
+port: 4000

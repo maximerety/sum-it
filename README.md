@@ -8,17 +8,11 @@ More on [the Sum it! website](https://maximerety.github.io/sum-it/)
 
 ## Contribute
 
-You can run the Sum it! website locally following these steps:
+You can run the Sum it! website locally using [dev containers with VS Code](https://code.visualstudio.com/docs/devcontainers/containers):
 
-1. Install [Ruby](https://www.ruby-lang.org/en/)
-1. Install [Vagrant](https://www.vagrantup.com/downloads.html)
-1. Install the vagrant-hostupdater plugin: `vagrant plugin install vagrant-hostsupdater`
-1. Install [VirtualBox](https://www.virtualbox.org/)
-1. Clone the project
-1. Run the VM: `vagrant up` (will be slow only the first time)
-1. Go to [dev.sum-it.io](http://dev.sum-it.io) in your browser
-1. Stop the VM: `vagrant halt`
+- Open the project in VS Code
+- Click on the `Reopen in Container` button (or on the blue icon at the bottom left of the window)
 
-## Credits
+In a VS Code terminal, run `gulp` to rebuild the bookmarklet code from `src/` and inject it in `index.md`.
 
-The development process of Sum it! uses the following open source and/or free softwares: Node.js, Npm, Babel, Gulp, Ruby, VirtualBox, Vagrant, Git, Jekyll, Github Pages, Linux Debian. Kudos to all their creators and maintainers!
+Go to http://localhost:4000/ to preview the landing page (`index.md`).

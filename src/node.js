@@ -50,7 +50,7 @@ const Node = {
     },
 
     querySimilarBetween: function (first, last, ancestor) {
-        let root = ancestor || this.getCommonAncestor([first, last]),
+        let root = ancestor || this.getCommonAncestor([first, last]),
             last_ancestry = this.getAncestry(last),
             selector_parts = [],
             selector_part,
@@ -66,17 +66,17 @@ const Node = {
         let common_part = selector_parts.shift().split(':')[0];
 
         let nth_child_first = nth_child;
-        let nth_child_last  = this.getNthChild(last_ancestry[last_ancestry.indexOf(root) + 1]);
+        let nth_child_last = this.getNthChild(last_ancestry[last_ancestry.indexOf(root) + 1]);
 
         if (nth_child_first > nth_child_last) {
             [nth_child_first, nth_child_last] = [nth_child_last, nth_child_first];
         }
 
-        let selector =  common_part +
-                            ':nth-child(n+'  + nth_child_first + ')' +
-                            ':nth-child(-n+' + nth_child_last + ')' +
-                            ' > ' +
-                        selector_parts.join(' > ');
+        let selector = common_part +
+            ':nth-child(n+' + nth_child_first + ')' +
+            ':nth-child(-n+' + nth_child_last + ')' +
+            ' > ' +
+            selector_parts.join(' > ');
 
         console.log("Selector:", selector);
 

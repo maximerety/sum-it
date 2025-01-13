@@ -1,32 +1,32 @@
 class Dataset {
-    constructor (values) {
-        this.values = values || [];
+    constructor(values) {
+        this.values = values || [];
     }
-    add (value) {
+    add(value) {
         this.values.push(value);
         return this;
     }
-    size () {
+    size() {
         return this.values.length;
     }
-    sum () {
+    sum() {
         return this.values.reduce((x, y) => x + y, 0);
     }
-    sum_positive () {
+    sum_positive() {
         return this.values.filter(x => x >= 0).reduce((x, y) => x + y, 0);
     }
-    sum_negative () {
+    sum_negative() {
         return this.values.filter(x => x < 0).reduce((x, y) => x + y, 0);
     }
-    mean () {
+    mean() {
         return this.sum() / this.size();
     }
-    variance () {
+    variance() {
         // V(X) = E[(X-E[X])^2] = E[X^2] - E[X]^2
         return new Dataset(this.values.map(x => Math.pow(x, 2))).mean() - Math.pow(this.mean(), 2)
     }
     // standard deviation
-    std () {
+    std() {
         return Math.sqrt(this.variance());
     }
 }

@@ -2,7 +2,7 @@ const Main = {
 
     targets: [],
 
-    listener: function(e) {
+    listener: function (e) {
         if (this.targets.length >= 2) {
             this.targets[0].style.outline = 'none';
             this.targets[1].style.outline = 'none';
@@ -44,11 +44,11 @@ const Main = {
                 dataset.add(value);
             });
 
-            let message = 'Total: '  + Num.format(dataset.sum())  + '  (+' + Num.format(dataset.sum_positive()) + ' / ' + Num.format(dataset.sum_negative()) + ')' + '\n\n' +
-                          'Mean: '   + Num.format(dataset.mean()) + '\n' +
-                          'Standard deviation: ' + Num.format(dataset.std()) + '\n' +
-                          'Variance: ' + Num.format(dataset.variance()) + '\n\n' +
-                          'Number of values: '  + Num.format(dataset.size());
+            let message = 'Total: ' + Num.format(dataset.sum()) + '  (+' + Num.format(dataset.sum_positive()) + ' / ' + Num.format(dataset.sum_negative()) + ')' + '\n\n' +
+                'Mean: ' + Num.format(dataset.mean()) + '\n' +
+                'Standard deviation: ' + Num.format(dataset.std()) + '\n' +
+                'Variance: ' + Num.format(dataset.variance()) + '\n\n' +
+                'Number of values: ' + Num.format(dataset.size());
 
             setTimeout(function () {
                 alert(message);

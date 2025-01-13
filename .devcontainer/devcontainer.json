@@ -4,7 +4,7 @@
 	"name": "Ruby",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// Image src: https://github.com/devcontainers/images/tree/main/src/ruby
-	"image": "mcr.microsoft.com/devcontainers/ruby:1-3.3-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/ruby:1-3.4-bookworm",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

@@ -8,7 +8,7 @@ const Num = {
         if (match = text.match(/^-?(\d{1,3}(?:([,.])\d{3}(?:\2\d{3})*)?)((?!\2)[,.]\d+)?$/)) {
             snum = match[1].replace(/[,.]/g, '') + (match[3] ? match[3].replace(",", ".") : '');
 
-        // matches: "-3100210.10", "9", "3.14"
+            // matches: "-3100210.10", "9", "3.14"
         } else if (match = text.match(/^-?\d+([,.]\d+)?$/)) {
             snum = text.replace(",", ".");
 

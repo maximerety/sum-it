@@ -2,6 +2,7 @@ const Num = {
     extractFloat: function (text) {
         let match, snum;
 
+        text = text.replace(/−/g, '-'); // normalize HTML &minus; sign
         text = text.replace(/[^0-9,.-]+/g, ''); // strip chars
 
         // matches: "3,100,210.10" / "-3.100.210,10" / "3,100,210"

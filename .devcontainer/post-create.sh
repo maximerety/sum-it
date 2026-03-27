@@ -2,11 +2,11 @@
 
 set -x
 
-# Install Node.js 22
+# Install Node.js 24
 export NVM_DIR="/usr/local/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-nvm install 22 --default
+nvm install 24 --default
 
 set -e
 
